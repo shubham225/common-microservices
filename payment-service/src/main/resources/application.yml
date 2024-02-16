@@ -1,0 +1,10 @@
+# Server Config
+server:
+  port: 7020
+
+# Spring Config
+logging:
+  level:
+    org:
+      springframework:
+        security: trace

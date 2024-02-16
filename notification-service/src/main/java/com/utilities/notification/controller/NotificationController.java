@@ -1,5 +1,6 @@
-package com.utilities.notification.controllers;
+package com.utilities.notification.controller;
 
+import com.utilities.notification.dto.MailRequestBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,9 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     @RequestMapping(
-            method = RequestMethod.GET
+            method = RequestMethod.POST
     )
-    public String sendNotification() {
+    public String sendNotification(@RequestBody MailRequestBody mailRequestBody) {
         return "Dummy Response";
     }
+
 }
