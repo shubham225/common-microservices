@@ -1,17 +1,22 @@
 package com.utilities.payments.controller;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.utilities.payments.service.PaymentService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/V1/payments")
 public class PaymentController {
+    final private PaymentService paymentService;
+
+    PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     @RequestMapping(
-            method = RequestMethod.POST
+            method = RequestMethod.POST,
+            path = "/{orderId}"
     )
-    public String initiatePayment() {
-        return "DUMMY RESPONSE";
+    public String initiatePayment(@PathVariable String orderId) {
+        return paymentService.initiatePayment(orderId);
     }
 }
