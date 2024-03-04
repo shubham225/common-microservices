@@ -8,3 +8,8 @@ logging:
     org:
       springframework:
         security: trace
+
+
+stripe:
+  secret:
+    key: ${STRIPE_SECRET_KEY}
