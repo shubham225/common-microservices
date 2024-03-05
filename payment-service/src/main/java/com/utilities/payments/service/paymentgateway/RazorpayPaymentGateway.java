@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class RazorpayPaymentGateway implements PaymentGateway{
     @Override
     public String getPaymentLink() {
-        return null;
+        return "DUMMY PAYMENT LINK";
     }
 }
