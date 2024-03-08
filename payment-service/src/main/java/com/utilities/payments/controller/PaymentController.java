@@ -13,7 +13,7 @@ public class PaymentController {
     }
 
     @RequestMapping(
-            method = RequestMethod.POST,
+            method = RequestMethod.GET,
             path = "/{orderId}"
     )
     public String initiatePayment(@PathVariable String orderId) {
