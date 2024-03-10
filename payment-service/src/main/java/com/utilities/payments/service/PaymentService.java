@@ -1,5 +1,6 @@
 package com.utilities.payments.service;
 
+import com.utilities.payments.dto.PaymentStatusDto;
 import com.utilities.payments.service.paymentgateway.PaymentGateway;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,11 @@ public class PaymentService {
         this.paymentGatewayStrategy = paymentGatewayStrategy;
     }
 
-    public String initiatePayment(String orderId) {
+    public PaymentStatusDto initiatePayment(String orderId) {
         PaymentGateway paymentGateway = paymentGatewayStrategy.getBestPaymentGateway();
-        return paymentGateway.getPaymentLink();
+        PaymentStatusDto paymentStatusDto = new PaymentStatusDto();
+        paymentStatusDto.setPaymentLink(paymentGateway.getPaymentLink());
+        paymentStatusDto.setOrderId(orderId);
+        return paymentStatusDto;
     }
 }

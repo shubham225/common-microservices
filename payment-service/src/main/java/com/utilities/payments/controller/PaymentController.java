@@ -1,5 +1,6 @@
 package com.utilities.payments.controller;
 
+import com.utilities.payments.dto.PaymentStatusDto;
 import com.utilities.payments.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class PaymentController {
             method = RequestMethod.GET,
             path = "/{orderId}"
     )
-    public String initiatePayment(@PathVariable String orderId) {
+    public PaymentStatusDto initiatePayment(@PathVariable String orderId) {
         return paymentService.initiatePayment(orderId);
     }
 }
