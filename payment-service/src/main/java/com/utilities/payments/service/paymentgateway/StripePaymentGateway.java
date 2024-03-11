@@ -20,7 +20,10 @@ public class StripePaymentGateway implements PaymentGateway{
         Stripe.apiKey = stripeSecretKey;
 
         ProductCreateParams params =
-                ProductCreateParams.builder().setName("My Test Product").build();
+                ProductCreateParams.builder()
+                        .setName("PRD001")
+                        .setDescription("My Test Product")
+                        .build();
 
         Product product = null;
         try {
