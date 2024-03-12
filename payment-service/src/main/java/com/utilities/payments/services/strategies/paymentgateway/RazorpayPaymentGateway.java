@@ -1,4 +1,4 @@
-package com.utilities.payments.service.paymentgateway;
+package com.utilities.payments.services.strategies.paymentgateway;
 
 import org.springframework.stereotype.Component;
 

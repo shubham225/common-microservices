@@ -1,4 +1,4 @@
-package com.utilities.payments.model;
+package com.utilities.payments.models;
 
 
 public class transactions {

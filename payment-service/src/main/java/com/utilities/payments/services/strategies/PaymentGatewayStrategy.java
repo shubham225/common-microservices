@@ -1,8 +1,8 @@
-package com.utilities.payments.service;
+package com.utilities.payments.services.strategies;
 
-import com.utilities.payments.service.paymentgateway.PaymentGateway;
-import com.utilities.payments.service.paymentgateway.RazorpayPaymentGateway;
-import com.utilities.payments.service.paymentgateway.StripePaymentGateway;
+import com.utilities.payments.services.strategies.paymentgateway.PaymentGateway;
+import com.utilities.payments.services.strategies.paymentgateway.RazorpayPaymentGateway;
+import com.utilities.payments.services.strategies.paymentgateway.StripePaymentGateway;
 import org.springframework.stereotype.Service;
 
 @Service
