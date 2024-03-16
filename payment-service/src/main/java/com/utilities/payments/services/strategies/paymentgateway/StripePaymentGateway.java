@@ -8,6 +8,7 @@ import com.stripe.model.Product;
 import com.stripe.param.PaymentLinkCreateParams;
 import com.stripe.param.PriceCreateParams;
 import com.stripe.param.ProductCreateParams;
+import com.utilities.payments.models.Order;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -16,28 +17,28 @@ public class StripePaymentGateway implements PaymentGateway{
     @Value("${stripe.secret.key}")
     private String stripeSecretKey;
     @Override
-    public String getPaymentLink() {
+    public String getPaymentLink(Order order) {
         Stripe.apiKey = stripeSecretKey;
 
-        ProductCreateParams params =
-                ProductCreateParams.builder()
-                        .setName("PRD001")
-                        .setDescription("My Test Product")
-                        .build();
-
-        Product product = null;
-        try {
-            product = Product.create(params);
-        } catch (StripeException e) {
-            throw new RuntimeException(e);
-        }
+//        ProductCreateParams params =
+//                ProductCreateParams.builder()
+//                        .setName("PRD001")
+//                        .setDescription("My Test Product")
+//                        .build();
+//
+//        Product product = null;
+//        try {
+//            product = Product.create(params);
+//        } catch (StripeException e) {
+//            throw new RuntimeException(e);
+//        }
 
         PriceCreateParams paramsPrice =
                 PriceCreateParams.builder()
-                        .setCurrency("usd")
-                        .setUnitAmount(1000L)
-                        .setProduct(product.getId())
+                        .setCurrency(order.getCurrency())
+                        .setUnitAmount(order.getAmount())
                         .build();
+
         Price price = null;
         try {
             price = Price.create(paramsPrice);
