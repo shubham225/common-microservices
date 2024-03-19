@@ -1,7 +1,7 @@
-package com.utilities.notification.controller;
+package com.utilities.notification.controllers;
 
-import com.utilities.notification.dto.MailRequestBody;
-import com.utilities.notification.service.NotificationService;
+import com.utilities.notification.dtos.MailRequestBody;
+import com.utilities.notification.services.NotificationService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

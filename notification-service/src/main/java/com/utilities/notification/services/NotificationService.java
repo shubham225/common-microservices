@@ -1,6 +1,6 @@
-package com.utilities.notification.service;
+package com.utilities.notification.services;
 
-import com.utilities.notification.dto.MailRequestBody;
+import com.utilities.notification.dtos.MailRequestBody;
 import org.springframework.stereotype.Service;
 
 @Service

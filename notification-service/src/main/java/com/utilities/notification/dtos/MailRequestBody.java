@@ -1,4 +1,4 @@
-package com.utilities.notification.dto;
+package com.utilities.notification.dtos;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -16,7 +16,7 @@ public class PaymentController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            path = "/initiate"
+            path = "/initiatePay"
     )
     public PaymentResponseDto initiatePayment(@RequestBody PaymentRequestDto paymentRequest) {
         return paymentService.initiatePayment(paymentRequest.getOrderId());
