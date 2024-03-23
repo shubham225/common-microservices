@@ -1,7 +1,7 @@
 package com.utilities.payments.models;
 
 
-public class transactions {
+public class Transactions {
     String transactionId;
     String orderId;
     int Amount;

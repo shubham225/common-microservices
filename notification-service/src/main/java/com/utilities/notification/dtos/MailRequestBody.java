@@ -6,7 +6,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MailRequestBody {
-    private String receiver;
+    private String to;
     private String cc;
+    private String bcc;
     private String body;
 }
