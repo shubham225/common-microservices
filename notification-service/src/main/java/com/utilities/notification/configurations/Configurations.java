@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-public class Config {
+public class Configurations {
     @Value("${sender.email}")
     private String mailId;
 
