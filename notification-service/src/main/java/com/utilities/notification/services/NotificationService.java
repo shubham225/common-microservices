@@ -1,6 +1,7 @@
 package com.utilities.notification.services;
 
-import com.utilities.notification.dtos.MailRequestBody;
+import com.utilities.notification.dtos.MailRequestDto;
+import com.utilities.notification.dtos.MailResponseDto;
 import com.utilities.notification.services.utilities.EmailService;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +13,14 @@ public class NotificationService {
         this.emailService = emailService;
     }
 
-    public String sendNotification(MailRequestBody mailRequestBody) {
-        emailService.sendMail(mailRequestBody.getTo(),
-                              mailRequestBody.getCc(),
-                              mailRequestBody.getSubject(),
-                              mailRequestBody.getBody()
+    public MailResponseDto sendNotification(MailRequestDto mailRequestDto) {
+        emailService.sendMail(mailRequestDto.getTo(),
+                              mailRequestDto.getCc(),
+                              mailRequestDto.getSubject(),
+                              mailRequestDto.getBody()
                             );
-        return "DUMMY";
+        MailResponseDto mailResponseDto = new MailResponseDto();
+        mailResponseDto.setStatus("MAIL_SENT");
+        return mailResponseDto;
     }
 }

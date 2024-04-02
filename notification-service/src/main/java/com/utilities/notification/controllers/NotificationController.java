@@ -1,6 +1,7 @@
 package com.utilities.notification.controllers;
 
-import com.utilities.notification.dtos.MailRequestBody;
+import com.utilities.notification.dtos.MailRequestDto;
+import com.utilities.notification.dtos.MailResponseDto;
 import com.utilities.notification.services.NotificationService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,8 @@ public class NotificationController {
     @RequestMapping(
             method = RequestMethod.POST
     )
-    public String sendNotification(@RequestBody MailRequestBody mailRequestBody) {
-        return notificationService.sendNotification(mailRequestBody);
+    public MailResponseDto sendNotification(@RequestBody MailRequestDto mailRequestDto) {
+        return notificationService.sendNotification(mailRequestDto);
     }
 
 }

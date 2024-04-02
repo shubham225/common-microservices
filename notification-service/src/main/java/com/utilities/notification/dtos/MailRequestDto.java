@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class MailRequestBody {
+public class MailRequestDto {
     private String to;
     private String cc;
     private String subject;
