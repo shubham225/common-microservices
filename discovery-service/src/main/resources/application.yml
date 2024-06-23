@@ -1,0 +1,13 @@
+# Server Config
+server:
+    port: 7030
+
+spring:
+    application:
+        name: discovery-service
+
+# Eureka Server Config
+eureka:
+    client:
+        registerWithEureka: false
+        fetchRegistry: false

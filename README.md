@@ -7,12 +7,12 @@ This repository contains links to reusable microservices that can be integrated 
 ### Payment Service
 A microservice for handling payment transactions.
 
-Repository: [Payment Service](payment-service/README.md)
+Repository: [Payment Service](https://github.com/shubham225/common-microservices/tree/main/payment-service)
 
 ### Notification Service
 A microservice for sending notifications via different channels.
 
-Repository: [Notification Service](notification-service/README.md)
+Repository: [Notification Service](https://github.com/shubham225/common-microservices/tree/main/notification-service)
 
 ### API Gateway
 A microservice that acts as an API Gateway for routing requests to appropriate microservices.
