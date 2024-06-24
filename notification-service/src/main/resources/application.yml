@@ -2,6 +2,10 @@
 server:
     port: 7010
 
+spring:
+  application:
+    name: notification-service
+
 # Spring Config
 logging:
   level:
@@ -13,3 +17,11 @@ logging:
 sender:
   email: ${EMAIL_ID}
   passwd: ${EMAIL_PASSWD}
+
+# Eureka Server Config
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7030/eureka
+    registerWithEureka: true
+    fetchRegistry: true
