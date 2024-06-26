@@ -38,6 +38,13 @@ Before running the service, ensure you have the following installed:
     ```bash
     mvn clean install
     ```
+### API Endpoints
+- `GET /` : Returns the Eureka dashboard homepage.
+- `GET /eureka/apps` : Returns a JSON list of all registered service instances.
+- `GET /eureka/apps/{applicationName}/{instanceId}` : Returns detailed information about a specific service instance.
+- `POST /eureka/apps/{applicationName}` : Registers a new service instance.
+- `DELETE /eureka/apps/{applicationName}/{instanceId}` : Deregisters an existing service instance.
+
 
 ### Running the Service
 
