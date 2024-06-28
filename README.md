@@ -30,9 +30,9 @@ A microservice for service discovery in a microservices architecture.
 Repository: [Discovery Service](https://github.com/shubham225/common-microservices/tree/main/discovery-service)
 
 ### Product Service
-A microservice for service discovery in a microservices architecture.
+A microservice for product management and cataloging.
 
-Repository: [Product Service](https://github.com/shubham225/common-microservices/tree/main/discovery-service)
+Repository: [Product Service](https://github.com/shubham225/common-microservices/tree/main/product-service)
 
 ## Getting Started
 
