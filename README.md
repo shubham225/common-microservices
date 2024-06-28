@@ -1,6 +1,6 @@
-# Common Microservices
+# E-Commerce Microservices
 
-This repository contains links and sources to reusable microservices that can be integrated into various projects. Below are the details and links to each microservice.
+This repository contains links and sources to microservices that can be integrated into various projects. Below are the details and links to each microservice.
 
 ## Microservices List
 
@@ -28,6 +28,11 @@ Repository: [Notification Service](https://github.com/shubham225/common-microser
 A microservice for service discovery in a microservices architecture.
 
 Repository: [Discovery Service](https://github.com/shubham225/common-microservices/tree/main/discovery-service)
+
+### Product Service
+A microservice for service discovery in a microservices architecture.
+
+Repository: [Product Service](https://github.com/shubham225/common-microservices/tree/main/discovery-service)
 
 ## Getting Started
 
