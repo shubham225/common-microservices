@@ -1,7 +1,32 @@
+# Application Info
+info:
+  application:
+    name: product-service
+    description: Product Service
+    author: Shubham Shinde
+    version: '@project.version@'
+
 # Server Config
 server:
   port: 7040
 
+# Spring Security Config
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
+
+# Database Config
 spring:
   application:
     name: product-service
+  datasource:
+    url: ${PRODUCT_DATASOURCE_URL}
+    username: ${PRODUCT_DB_USER}
+    password: ${PRODUCT_DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
