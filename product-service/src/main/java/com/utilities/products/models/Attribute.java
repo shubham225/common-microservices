@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Attribute extends BaseModel {
-    private String name;
-    private AttributeType type;
+    private String          name;
+    private AttributeType   type;
 }

@@ -10,6 +10,6 @@ import lombok.Setter;
 @Entity
 public class AttributeTerm extends BaseModel {
     @ManyToOne
-    private Attribute attribute;
-    private String value;
+    private Attribute   attribute;
+    private String      value;
 }

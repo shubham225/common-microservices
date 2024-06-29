@@ -2,10 +2,12 @@ package com.utilities.products.services;
 
 import com.utilities.products.dtos.AttributeRequestDto;
 import com.utilities.products.models.Attribute;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class AttributeServiceImpl implements AttributeService{
     @Override
     public List<Attribute> getAllAttributes() {

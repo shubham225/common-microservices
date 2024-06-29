@@ -1,9 +1,6 @@
 package com.utilities.products.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +10,12 @@ import java.util.List;
 @Setter
 @Entity
 public class Product extends BaseModel {
-    private String          name;
-    private String          description;
+    private String                  name;
+    private String                  description;
     @ManyToMany
-    private List<Category>  categories;
+    private List<Category>          categories;
     @ManyToOne
-    private Seller          seller;
+    private Seller                  seller;
+    @OneToMany
+    private List<ProductVariation>  productVariation;
 }

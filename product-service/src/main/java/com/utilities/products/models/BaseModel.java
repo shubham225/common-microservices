@@ -16,7 +16,7 @@ import java.util.UUID;
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    private UUID id;
     private Date createdOn;
     private Date modifiedOn;
 
