@@ -2,7 +2,9 @@ package com.utilities.products.controllers;
 
 import com.utilities.products.dtos.AttributeRequestDto;
 import com.utilities.products.dtos.AttributeResponseDto;
+import com.utilities.products.dtos.AttributeTermResponseDto;
 import com.utilities.products.models.Attribute;
+import com.utilities.products.models.AttributeTerm;
 import com.utilities.products.services.AttributeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +29,6 @@ public class AttributeController {
         List<AttributeResponseDto> attributeResponseDtoList = new ArrayList<>();
 
         for(Attribute attribute : attributeList)
-            
-            
-            
-            
             attributeResponseDtoList.add(new AttributeResponseDto(attribute));
 
         return attributeResponseDtoList;
@@ -40,16 +38,16 @@ public class AttributeController {
             method = RequestMethod.POST
     )
     public AttributeResponseDto createNewAttribute(@RequestBody AttributeRequestDto requestDto) {
-        Attribute product = attributeService.createNewAttribute(requestDto);
-        return new AttributeResponseDto(product);
+        Attribute attribute = attributeService.createNewAttribute(requestDto);
+        return new AttributeResponseDto(attribute);
     }
 
     @RequestMapping(
             method = RequestMethod.GET,
             path = "{id}"
     )
-    public AttributeResponseDto getAttributeDetail(@PathVariable UUID id) {
-        Attribute attribute = attributeService.getAttribute(id);
+    public AttributeResponseDto getAttributeById(@PathVariable UUID id) {
+        Attribute attribute = attributeService.getAttributeById(id);
         return new AttributeResponseDto(attribute);
     }
 
@@ -57,8 +55,9 @@ public class AttributeController {
             method = RequestMethod.PUT,
             path = "{id}"
     )
-    public AttributeResponseDto updateAttribute(@PathVariable UUID id) {
-        Attribute attribute = attributeService.updateAttribute(id);
+    public AttributeResponseDto updateAttributeById(@PathVariable UUID id,
+                                                    @RequestBody  AttributeRequestDto requestDto) {
+        Attribute attribute = attributeService.updateAttributeById(id, requestDto);
         return new AttributeResponseDto(attribute);
     }
 
@@ -66,8 +65,61 @@ public class AttributeController {
             method = RequestMethod.DELETE,
             path = "{id}"
     )
-    public AttributeResponseDto deleteAttribute(@PathVariable UUID id) {
-        Attribute attribute = attributeService.deleteAttribute(id);
+    public AttributeResponseDto deleteAttributeById(@PathVariable UUID id) {
+        Attribute attribute = attributeService.deleteAttributeById(id);
         return new AttributeResponseDto(attribute);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "{id}/terms"
+    )
+    public List<AttributeTermResponseDto> getAllAttributeTermsByAttributeId(@PathVariable UUID id) {
+        List<AttributeTerm> attributeTermList = attributeService.getAllAttributeTermsByAttributeId(id);
+        List<AttributeTermResponseDto> attributeTermsResponseDtoList = new ArrayList<>();
+
+        for(AttributeTerm attributeTerm : attributeTermList)
+            attributeTermsResponseDtoList.add(new AttributeTermResponseDto(attributeTerm));
+
+        return attributeTermsResponseDtoList;
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            path = "{id}/terms"
+    )
+    public AttributeTermResponseDto createNewAttributeTerm(@PathVariable UUID id,
+                                                           @RequestBody  AttributeRequestDto requestDto) {
+        AttributeTerm attributeTerm = attributeService.createNewAttributeTerm(id, requestDto);
+        return new AttributeTermResponseDto(attributeTerm);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "{id}/terms/{termId}"
+    )
+    public AttributeTermResponseDto getAttributeTermById(@PathVariable UUID id,
+                                                         @PathVariable UUID termId) {
+        AttributeTerm attributeTerm = attributeService.getAttributeTermById(id, termId);
+        return new AttributeTermResponseDto(attributeTerm);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            path = "{id}/terms/{termId}"
+    )
+    public AttributeTermResponseDto updateAttributeTermById(@PathVariable UUID id,
+                                                            @RequestBody  AttributeRequestDto requestDto) {
+        AttributeTerm attributeTerm = attributeService.updateAttributeTermById(id, requestDto);
+        return new AttributeTermResponseDto(attributeTerm);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            path = "{id}/terms/{termId}"
+    )
+    public AttributeTermResponseDto deleteAttributeTermById(@PathVariable UUID id) {
+        AttributeTerm attributeTerm = attributeService.deleteAttributeTermById(id);
+        return new AttributeTermResponseDto(attributeTerm);
     }
 }

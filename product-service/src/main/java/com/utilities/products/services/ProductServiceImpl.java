@@ -1,7 +1,11 @@
 package com.utilities.products.services;
 
 import com.utilities.products.dtos.ProductRequestDto;
+import com.utilities.products.dtos.ProductUpdateRequestDto;
+import com.utilities.products.dtos.ProductVariationRequestDto;
+import com.utilities.products.dtos.ProductVariationUpdateRequestDto;
 import com.utilities.products.models.Product;
+import com.utilities.products.models.ProductVariation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +19,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProductDetail(UUID id) {
+    public Product getProductById(UUID id) {
         return null;
     }
 
@@ -25,12 +29,37 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product deleteProduct(UUID id) {
+    public Product updateProductById(UUID id, ProductUpdateRequestDto requestDto) {
         return null;
     }
 
     @Override
-    public Product updateProduct(UUID id) {
+    public Product deleteProductById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public List<ProductVariation> getAllProductVariations(UUID id) {
+        return null;
+    }
+
+    @Override
+    public ProductVariation getProductVariationById(UUID id, UUID varId) {
+        return null;
+    }
+
+    @Override
+    public ProductVariation updateProductVariationById(UUID id, UUID varId, ProductVariationUpdateRequestDto requestDto) {
+        return null;
+    }
+
+    @Override
+    public ProductVariation deleteProductVariationById(UUID id, UUID varId) {
+        return null;
+    }
+
+    @Override
+    public ProductVariation createNewProductVariation(ProductVariationRequestDto requestDto) {
         return null;
     }
 }

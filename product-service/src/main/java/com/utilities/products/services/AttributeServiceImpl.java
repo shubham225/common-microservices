@@ -2,6 +2,7 @@ package com.utilities.products.services;
 
 import com.utilities.products.dtos.AttributeRequestDto;
 import com.utilities.products.models.Attribute;
+import com.utilities.products.models.AttributeTerm;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,17 +21,42 @@ public class AttributeServiceImpl implements AttributeService{
     }
 
     @Override
-    public Attribute getAttribute(UUID id) {
+    public Attribute getAttributeById(UUID id) {
         return null;
     }
 
     @Override
-    public Attribute updateAttribute(UUID id) {
+    public Attribute updateAttributeById(UUID id, AttributeRequestDto requestDto) {
         return null;
     }
 
     @Override
-    public Attribute deleteAttribute(UUID id) {
+    public Attribute deleteAttributeById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public List<AttributeTerm> getAllAttributeTermsByAttributeId(UUID id) {
+        return null;
+    }
+
+    @Override
+    public AttributeTerm createNewAttributeTerm(UUID id, AttributeRequestDto requestDto) {
+        return null;
+    }
+
+    @Override
+    public AttributeTerm deleteAttributeTermById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public AttributeTerm updateAttributeTermById(UUID id, AttributeRequestDto requestDto) {
+        return null;
+    }
+
+    @Override
+    public AttributeTerm getAttributeTermById(UUID id, UUID termId) {
         return null;
     }
 }

@@ -1,8 +1,8 @@
 package com.utilities.products.controllers;
 
-import com.utilities.products.dtos.ProductResponseDto;
-import com.utilities.products.dtos.ProductRequestDto;
+import com.utilities.products.dtos.*;
 import com.utilities.products.models.Product;
+import com.utilities.products.models.ProductVariation;
 import com.utilities.products.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +22,7 @@ public class ProductController {
     @RequestMapping(
             method = RequestMethod.GET
     )
-    public List<ProductResponseDto> getAllProductDetails(@RequestParam(defaultValue = "asc") String sort,
+    public List<ProductResponseDto> getAllProducts(@RequestParam(defaultValue = "asc") String sort,
                                                          @RequestParam(defaultValue = "") String limit,
                                                          @RequestParam(defaultValue = "1") String offset) {
         List<Product> productList = productService.getAllProducts(sort, limit, offset);
@@ -46,8 +46,8 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "{id}"
     )
-    public ProductResponseDto getProductDetail(@PathVariable UUID id) {
-        Product product = productService.getProductDetail(id);
+    public ProductResponseDto getProductById(@PathVariable UUID id) {
+        Product product = productService.getProductById(id);
         return new ProductResponseDto(product);
     }
 
@@ -55,8 +55,9 @@ public class ProductController {
             method = RequestMethod.PUT,
             path = "{id}"
     )
-    public ProductResponseDto updateProduct(@PathVariable UUID id) {
-        Product product = productService.updateProduct(id);
+    public ProductResponseDto updateProductById(@PathVariable UUID id,
+                                            @RequestBody ProductUpdateRequestDto requestDto) {
+        Product product = productService.updateProductById(id, requestDto);
         return new ProductResponseDto(product);
     }
 
@@ -64,12 +65,64 @@ public class ProductController {
             method = RequestMethod.DELETE,
             path = "{id}"
     )
-    public ProductResponseDto deleteProduct(@PathVariable UUID id) {
-        Product product = productService.deleteProduct(id);
+    public ProductResponseDto deleteProductById(@PathVariable UUID id) {
+        Product product = productService.deleteProductById(id);
         return new ProductResponseDto(product);
     }
 
-    /*
-    * TODO : Request Mappings for Product variations
-     */
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "{id}/variations"
+    )
+    public List<ProductVariationResponseDto> getAllProductVariations(@PathVariable UUID id) {
+        List<ProductVariation> productVariationList = productService.getAllProductVariations(id);
+        List<ProductVariationResponseDto> productVariationResponseDtoList = new ArrayList<>();
+
+        for(ProductVariation productVariation : productVariationList) {
+            productVariationResponseDtoList.add(new ProductVariationResponseDto(productVariation));
+        }
+
+        return productVariationResponseDtoList;
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            path = "{id}/variations"
+    )
+    public ProductVariationResponseDto createNewProductVariation(@PathVariable UUID id,
+                                                                 @RequestBody  ProductVariationRequestDto requestDto) {
+        ProductVariation productVariation = productService.createNewProductVariation(requestDto);
+        return new ProductVariationResponseDto(productVariation);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "{id}/variations/{varId}"
+    )
+    public ProductVariationResponseDto getProductVariationById(@PathVariable UUID id,
+                                                               @PathVariable UUID varId) {
+        ProductVariation productVariation = productService.getProductVariationById(id, varId);
+        return new ProductVariationResponseDto(productVariation);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            path = "{id}/variations/{varId}"
+    )
+    public ProductVariationResponseDto updateProductVariationById(@PathVariable UUID id,
+                                                                  @PathVariable UUID varId,
+                                                                  @RequestBody  ProductVariationUpdateRequestDto requestDto) {
+        ProductVariation productVariation = productService.updateProductVariationById(id, varId, requestDto);
+        return new ProductVariationResponseDto(productVariation);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            path = "{id}/variations/{varId}"
+    )
+    public ProductVariationResponseDto deleteProductVariationById(@PathVariable UUID id,
+                                                                  @PathVariable UUID varId) {
+        ProductVariation productVariation = productService.deleteProductVariationById(id, varId);
+        return new ProductVariationResponseDto(productVariation);
+    }
 }

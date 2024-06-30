@@ -20,17 +20,18 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category updateCategory(UUID id) {
+    public Category getCategoryById(UUID id) {
         return null;
     }
 
     @Override
-    public Category deleteCategory(UUID id) {
+    public Category updateCategoryById(UUID id, CategoryRequestDto requestDto) {
         return null;
     }
 
     @Override
-    public Category getCategory(UUID id) {
+    public Category deleteCategoryById(UUID id) {
         return null;
     }
+
 }

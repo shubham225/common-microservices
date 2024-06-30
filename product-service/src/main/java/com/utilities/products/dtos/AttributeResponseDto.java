@@ -1,6 +1,7 @@
 package com.utilities.products.dtos;
 
 import com.utilities.products.models.Attribute;
+import com.utilities.products.models.AttributeTerm;
 import lombok.Getter;
 import lombok.Setter;
 

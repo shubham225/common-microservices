@@ -48,8 +48,8 @@ public class CategoryController {
             method = RequestMethod.GET,
             path = "{id}"
     )
-    public CategoryResponseDto getCategoryDetail(@PathVariable UUID id) {
-        Category category = categoryService.getCategory(id);
+    public CategoryResponseDto getCategoryById(@PathVariable UUID id) {
+        Category category = categoryService.getCategoryById(id);
         return new CategoryResponseDto(category);
     }
 
@@ -57,8 +57,9 @@ public class CategoryController {
             method = RequestMethod.PUT,
             path = "{id}"
     )
-    public CategoryResponseDto updateCategory(@PathVariable UUID id) {
-        Category category = categoryService.updateCategory(id);
+    public CategoryResponseDto updateCategoryById(@PathVariable UUID id,
+                                                  @RequestBody  CategoryRequestDto requestDto) {
+        Category category = categoryService.updateCategoryById(id, requestDto);
         return new CategoryResponseDto(category);
     }
 
@@ -66,8 +67,8 @@ public class CategoryController {
             method = RequestMethod.DELETE,
             path = "{id}"
     )
-    public CategoryResponseDto deleteCategory(@PathVariable UUID id) {
-        Category category = categoryService.deleteCategory(id);
+    public CategoryResponseDto deleteCategoryById(@PathVariable UUID id) {
+        Category category = categoryService.deleteCategoryById(id);
         return new CategoryResponseDto(category);
     }
 }

@@ -11,9 +11,9 @@ public interface CategoryService {
 
     public Category createNewCategory(CategoryRequestDto requestDto);
 
-    public Category updateCategory(UUID id);
+    public Category getCategoryById(UUID id);
 
-    public Category deleteCategory(UUID id);
+    public Category updateCategoryById(UUID id, CategoryRequestDto requestDto);
 
-    public Category getCategory(UUID id);
+    public Category deleteCategoryById(UUID id);
 }
