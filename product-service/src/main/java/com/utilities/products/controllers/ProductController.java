@@ -23,9 +23,13 @@ public class ProductController {
             method = RequestMethod.GET
     )
     public List<ProductResponseDto> getAllProducts(@RequestParam(defaultValue = "asc") String sort,
-                                                         @RequestParam(defaultValue = "") String limit,
-                                                         @RequestParam(defaultValue = "1") String offset) {
-        List<Product> productList = productService.getAllProducts(sort, limit, offset);
+                                                   @RequestParam(defaultValue = "name") String sortBy,
+                                                   @RequestParam(defaultValue = "1000") String limit,
+                                                   @RequestParam(defaultValue = "1") String offset) {
+
+        List<Product> productList = productService.getAllProducts(sort, sortBy,
+                                                                  Integer.parseInt(limit),
+                                                                  Integer.parseInt(offset));
         List<ProductResponseDto> productResponseDtoList = new ArrayList<>();
 
         for(Product product : productList)

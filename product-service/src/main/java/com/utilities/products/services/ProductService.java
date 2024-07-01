@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-    public List<Product> getAllProducts(String sort, String limit, String offset);
+    public List<Product> getAllProducts(String sort, String sortBy, int limit, int offset);
 
     public Product getProductById(UUID id);
 

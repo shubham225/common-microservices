@@ -53,11 +53,8 @@ Follow these steps to deploy the application in a production environment:
 The Product Service requires the following environment variables to be set for database connectivity:
 
 - **PRODUCT_DATASOURCE_URL**: This variable should be set to the URL of your server datasource. For example, if you're using a MySQL/MariaDB database for service, the URL might look like `jdbc:mariadb://localhost:3306/your_database_name`.
-
 - **PRODUCT_DB_USER**: Set this variable to the username used to access your database.
-
 - **PRODUCT_DB_PASSWORD**: Set this variable to the password used to access your database.
-
 Make sure to set these environment variables either directly in your development environment or using a configuration file such as `application.properties` or `application.yml` for local development. Additionally, when deploying your Spring Boot application, you can configure these variables through your deployment environment settings.
 
 ## API Endpoints
@@ -66,6 +63,7 @@ Here are some of the key API endpoints provided by the OAuth2 authorization serv
 
 ### Product Management Endpoints
 - **`GET /api/V1/products`:** Retrieve a list of products
+- **`GET /api/V1/products?sort=asc&limit=10&offset=15`:** Retrieve a list of `10` products sorted in `ascending` order starting from `15`th record
 - **`GET /api/V1/products/{id}`:** Retrieve a single product by ID
 - **`POST /api/V1/products`:** Create a new product
 - **`PUT /api/V1/products/{id}`:** Update an existing product by ID
@@ -95,7 +93,7 @@ Here are some of the key API endpoints provided by the OAuth2 authorization serv
 - **`POST /attributes/{id}/terms`:** Create a new attribute term
 - **`PUT /attributes/{id}/terms/{termId}`:** Update an existing attribute term by ID
 - **`DELETE /attributes/{id}/terms/{termId}`:** Delete an attribute term by ID
-- 
+
 ### Other Endpoints
 - **`GET /actuator/health`:** Exposes the health status of the application
 - **`GET /actuator/info`:** Provides general information about the application.
