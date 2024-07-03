@@ -95,7 +95,7 @@ public class ProductController {
     )
     public ProductVariationResponseDto createNewProductVariation(@PathVariable UUID id,
                                                                  @RequestBody  ProductVariationRequestDto requestDto) {
-        ProductVariation productVariation = productService.createNewProductVariation(requestDto);
+        ProductVariation productVariation = productService.createNewProductVariation(id, requestDto);
         return new ProductVariationResponseDto(productVariation);
     }
 

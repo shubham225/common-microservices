@@ -84,36 +84,114 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product updateProductById(UUID id, ProductUpdateRequestDto requestDto) {
-        return null;
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if(productOptional.isEmpty())
+            throw new RuntimeException("Product Not Found");
+
+        Product product = productOptional.get();
+        product.setName(requestDto.getName());
+        product.setDescription(requestDto.getDescription());
+        product.setCategories(requestDto.getCategories());
+        product.setSeller(requestDto.getSeller());
+
+        product = productRepository.save(product);
+
+        return product;
     }
 
     @Override
     public Product deleteProductById(UUID id) {
-        return null;
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if(productOptional.isEmpty())
+            throw new RuntimeException("Product Not Found");
+
+        Product product = productOptional.get();
+
+        productRepository.delete(product);
+
+        return product;
     }
 
     @Override
     public List<ProductVariation> getAllProductVariations(UUID id) {
-        return null;
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if(productOptional.isEmpty())
+            throw new RuntimeException("Product Not Found");
+
+        Product product = productOptional.get();
+
+        return product.getProductVariation();
     }
 
     @Override
     public ProductVariation getProductVariationById(UUID id, UUID varId) {
-        return null;
+        Optional<ProductVariation> productVariationOptional = productVariationRepository.findById(varId);
+
+        if (productVariationOptional.isEmpty())
+            throw new RuntimeException("Variation Not found");
+
+        return productVariationOptional.get();
     }
 
     @Override
     public ProductVariation updateProductVariationById(UUID id, UUID varId, ProductVariationUpdateRequestDto requestDto) {
-        return null;
+        Optional<ProductVariation> productVariationOptional = productVariationRepository.findById(varId);
+
+        if (productVariationOptional.isEmpty())
+            throw new RuntimeException("Variation Not found");
+
+        ProductVariation variation = productVariationOptional.get();
+
+        variation.setRegularPrice(requestDto.getRegularPrice());
+        variation.setSalesPrice(requestDto.getSalesPrice());
+        variation.setStockQuantity(requestDto.getStockQuantity());
+
+        variation.setStockStatus((variation.getStockQuantity() > 0) ? StockStatus.IN_STOCK :StockStatus.OUT_OF_STOCK);
+        variation.setImageURI(requestDto.getImageURI());
+
+        variation = productVariationRepository.save(variation);
+
+        return variation;
     }
 
     @Override
     public ProductVariation deleteProductVariationById(UUID id, UUID varId) {
-        return null;
+        Optional<ProductVariation> productVariationOptional = productVariationRepository.findById(varId);
+
+        if (productVariationOptional.isEmpty())
+            throw new RuntimeException("Variation Not found");
+
+        ProductVariation variation = productVariationOptional.get();
+
+        productVariationRepository.delete(variation);
+
+        return variation;
     }
 
     @Override
-    public ProductVariation createNewProductVariation(ProductVariationRequestDto requestDto) {
-        return null;
+    public ProductVariation createNewProductVariation(UUID id, ProductVariationRequestDto requestDto) {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if(productOptional.isEmpty())
+            throw new RuntimeException("Product Not Found");
+
+        Product product = productOptional.get();
+
+        ProductVariation variation = new ProductVariation();
+
+        variation.setProduct(product);
+        variation.setDefaultVariation(true);
+        variation.setRegularPrice(requestDto.getRegularPrice());
+        variation.setSalesPrice(requestDto.getSalesPrice());
+        variation.setStockQuantity(requestDto.getStockQuantity());
+        variation.setStockStatus(StockStatus.IN_STOCK);
+        variation.setImageURI(requestDto.getImageURI());
+
+        variation = productVariationRepository.save(variation);
+
+        return variation;
     }
 }

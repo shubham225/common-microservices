@@ -29,5 +29,5 @@ public interface ProductService {
 
     public ProductVariation deleteProductVariationById(UUID id, UUID varId);
 
-    public ProductVariation createNewProductVariation(ProductVariationRequestDto requestDto);
+    public ProductVariation createNewProductVariation(UUID id, ProductVariationRequestDto requestDto);
 }
