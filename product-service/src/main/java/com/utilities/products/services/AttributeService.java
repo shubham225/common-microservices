@@ -22,9 +22,9 @@ public interface AttributeService {
 
     public AttributeTerm createNewAttributeTerm(UUID id, AttributeRequestDto requestDto);
 
-    public AttributeTerm deleteAttributeTermById(UUID id);
+    public AttributeTerm deleteAttributeTermById(UUID id, UUID termId);
 
-    public AttributeTerm updateAttributeTermById(UUID id, AttributeRequestDto requestDto);
+    public AttributeTerm updateAttributeTermById(UUID id, UUID termId, AttributeRequestDto requestDto);
 
     public AttributeTerm getAttributeTermById(UUID id, UUID termId);
 }

@@ -109,8 +109,9 @@ public class AttributeController {
             path = "{id}/terms/{termId}"
     )
     public AttributeTermResponseDto updateAttributeTermById(@PathVariable UUID id,
+                                                            @PathVariable UUID termId,
                                                             @RequestBody  AttributeRequestDto requestDto) {
-        AttributeTerm attributeTerm = attributeService.updateAttributeTermById(id, requestDto);
+        AttributeTerm attributeTerm = attributeService.updateAttributeTermById(id, termId, requestDto);
         return new AttributeTermResponseDto(attributeTerm);
     }
 
@@ -118,8 +119,9 @@ public class AttributeController {
             method = RequestMethod.DELETE,
             path = "{id}/terms/{termId}"
     )
-    public AttributeTermResponseDto deleteAttributeTermById(@PathVariable UUID id) {
-        AttributeTerm attributeTerm = attributeService.deleteAttributeTermById(id);
+    public AttributeTermResponseDto deleteAttributeTermById(@PathVariable UUID id,
+                                                            @PathVariable UUID termId) {
+        AttributeTerm attributeTerm = attributeService.deleteAttributeTermById(id, termId);
         return new AttributeTermResponseDto(attributeTerm);
     }
 }
