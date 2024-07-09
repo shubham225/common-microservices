@@ -1,6 +1,7 @@
 package com.utilities.products.controllers;
 
 import com.utilities.products.dtos.*;
+import com.utilities.products.exceptions.ProductNotFoundException;
 import com.utilities.products.models.Product;
 import com.utilities.products.models.ProductVariation;
 import com.utilities.products.services.ProductService;
@@ -50,7 +51,7 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "{id}"
     )
-    public ProductResponseDto getProductById(@PathVariable UUID id) {
+    public ProductResponseDto getProductById(@PathVariable UUID id) throws ProductNotFoundException {
         Product product = productService.getProductById(id);
         return new ProductResponseDto(product);
     }
@@ -60,7 +61,7 @@ public class ProductController {
             path = "{id}"
     )
     public ProductResponseDto updateProductById(@PathVariable UUID id,
-                                            @RequestBody ProductUpdateRequestDto requestDto) {
+                                            @RequestBody ProductUpdateRequestDto requestDto) throws ProductNotFoundException {
         Product product = productService.updateProductById(id, requestDto);
         return new ProductResponseDto(product);
     }
@@ -69,7 +70,7 @@ public class ProductController {
             method = RequestMethod.DELETE,
             path = "{id}"
     )
-    public ProductResponseDto deleteProductById(@PathVariable UUID id) {
+    public ProductResponseDto deleteProductById(@PathVariable UUID id) throws ProductNotFoundException {
         Product product = productService.deleteProductById(id);
         return new ProductResponseDto(product);
     }
@@ -78,7 +79,7 @@ public class ProductController {
             method = RequestMethod.GET,
             path = "{id}/variations"
     )
-    public List<ProductVariationResponseDto> getAllProductVariations(@PathVariable UUID id) {
+    public List<ProductVariationResponseDto> getAllProductVariations(@PathVariable UUID id) throws ProductNotFoundException {
         List<ProductVariation> productVariationList = productService.getAllProductVariations(id);
         List<ProductVariationResponseDto> productVariationResponseDtoList = new ArrayList<>();
 
@@ -94,7 +95,7 @@ public class ProductController {
             path = "{id}/variations"
     )
     public ProductVariationResponseDto createNewProductVariation(@PathVariable UUID id,
-                                                                 @RequestBody  ProductVariationRequestDto requestDto) {
+                                                                 @RequestBody  ProductVariationRequestDto requestDto) throws ProductNotFoundException {
         ProductVariation productVariation = productService.createNewProductVariation(id, requestDto);
         return new ProductVariationResponseDto(productVariation);
     }

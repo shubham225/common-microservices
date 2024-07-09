@@ -5,6 +5,7 @@ import com.utilities.products.dtos.ProductUpdateRequestDto;
 import com.utilities.products.dtos.ProductVariationRequestDto;
 import com.utilities.products.dtos.ProductVariationUpdateRequestDto;
 import com.utilities.products.enums.StockStatus;
+import com.utilities.products.exceptions.ProductNotFoundException;
 import com.utilities.products.models.Product;
 import com.utilities.products.models.ProductVariation;
 import com.utilities.products.respositories.ProductRepository;
@@ -45,11 +46,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProductById(UUID id) {
+    public Product getProductById(UUID id) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(id);
 
         if(productOptional.isEmpty())
-            throw new RuntimeException("Product Not Found");
+            throw new ProductNotFoundException("Product Not Found");
 
         return productOptional.orElse(null);
     }
@@ -83,11 +84,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product updateProductById(UUID id, ProductUpdateRequestDto requestDto) {
+    public Product updateProductById(UUID id, ProductUpdateRequestDto requestDto) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(id);
 
         if(productOptional.isEmpty())
-            throw new RuntimeException("Product Not Found");
+            throw new ProductNotFoundException("Product Not Found");
 
         Product product = productOptional.get();
         product.setName(requestDto.getName());
@@ -101,11 +102,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product deleteProductById(UUID id) {
+    public Product deleteProductById(UUID id) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(id);
 
         if(productOptional.isEmpty())
-            throw new RuntimeException("Product Not Found");
+            throw new ProductNotFoundException("Product Not Found");
 
         Product product = productOptional.get();
 
@@ -115,11 +116,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductVariation> getAllProductVariations(UUID id) {
+    public List<ProductVariation> getAllProductVariations(UUID id) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(id);
 
         if(productOptional.isEmpty())
-            throw new RuntimeException("Product Not Found");
+            throw new ProductNotFoundException("Product Not Found");
 
         Product product = productOptional.get();
 
@@ -172,11 +173,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductVariation createNewProductVariation(UUID id, ProductVariationRequestDto requestDto) {
+    public ProductVariation createNewProductVariation(UUID id, ProductVariationRequestDto requestDto) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(id);
 
         if(productOptional.isEmpty())
-            throw new RuntimeException("Product Not Found");
+            throw new ProductNotFoundException("Product Not Found");
 
         Product product = productOptional.get();
 
