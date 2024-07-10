@@ -47,5 +47,11 @@ Before running the service, ensure you have the following installed:
 
 To build and run the service, use Maven:
 
-```bash
-mvn spring-boot:run
+   ```bash
+   mvn spring-boot:run
+   ```
+## API Endpoints
+
+Here are some of the key API endpoints provided by the Payment service:
+
+- **`GET /api/V1/payments/initiatePay`:** Initiates payment and returns the Payment link.

@@ -59,7 +59,7 @@ Make sure to set these environment variables either directly in your development
 
 ## API Endpoints
 
-Here are some of the key API endpoints provided by the OAuth2 authorization service:
+Here are some of the key API endpoints provided by the Product Service:
 
 ### Product Management Endpoints
 - **`GET /api/V1/products`:** Retrieve a list of products
