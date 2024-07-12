@@ -79,3 +79,10 @@ To start the Notification Service, run:
 
 ```bash
 mvn spring-boot:run
+```
+
+## API Endpoints
+
+Here are some of the key API endpoints provided by the Notification service:
+
+- **`GET /api/V1/notify`:** Sends a mail to the specified receiver in request body.
