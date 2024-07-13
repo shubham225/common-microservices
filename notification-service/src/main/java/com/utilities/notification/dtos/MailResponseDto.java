@@ -7,4 +7,8 @@ import lombok.Setter;
 @Setter
 public class MailResponseDto {
     private String status;
+    public MailResponseDto() {}
+    public MailResponseDto(String status) {
+        this.status = status;
+    }
 }
