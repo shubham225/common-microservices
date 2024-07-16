@@ -2,6 +2,7 @@ package com.utilities.notification.services;
 
 import com.utilities.notification.dtos.MailRequestDto;
 import com.utilities.notification.dtos.MailResponseDto;
+import com.utilities.notification.dtos.UserPreferencesDto;
 import com.utilities.notification.services.utilities.EmailService;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,9 @@ public class NotificationService {
         MailResponseDto mailResponseDto = new MailResponseDto();
         mailResponseDto.setStatus("MAIL_SENT");
         return mailResponseDto;
+    }
+
+    public MailResponseDto setPreferences(UserPreferencesDto userPreferencesDto) {
+        return new MailResponseDto("DONE");
     }
 }

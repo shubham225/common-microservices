@@ -29,24 +29,8 @@ public class NotificationController {
             path = "/preferences",
             method = RequestMethod.PUT
     )
-    public MailResponseDto sendNotification(@RequestBody UserPreferencesDto userPreferencesDto) {
-        // TODO : Set Up User Preferences like below
-        /*
-           const put = {
-              userId: `123`,
-              preferences: [
-                {
-                  notificationTypeId: `alert`,
-                  enabledChannels: {
-                    email: false,
-                    sms: false,
-                    inapp: true,
-                  },
-                },
-              ]
-            }
-         */
-        return new MailResponseDto("Test");
+    public MailResponseDto setPreferences(@RequestBody UserPreferencesDto userPreferencesDto) {
+        return notificationService.setPreferences(userPreferencesDto);
     }
 
 }
