@@ -22,10 +22,10 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="discovery" options="-parameters" />
-      <module name="notification" options="-parameters" />
+      <module name="notification" options="" />
       <module name="notification-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
-      <module name="payments" options="-parameters" />
+      <module name="payments" options="" />
       <module name="products" options="-parameters" />
     </option>
   </component>

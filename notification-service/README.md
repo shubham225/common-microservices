@@ -55,8 +55,6 @@ Before running the service, ensure you have the following installed:
     email:
       username: ${EMAIL_ID}
       password: ${EMAIL_PASSWD}
-
-    # Add other configuration settings as needed
     ```
 
    In this example:
