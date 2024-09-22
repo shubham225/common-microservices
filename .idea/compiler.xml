@@ -9,23 +9,26 @@
         <outputRelativeToContentRoot value="true" />
         <module name="notification" />
         <module name="payment-service" />
-        <module name="notification-service" />
         <module name="discovery" />
         <module name="payments" />
+        <module name="kafka" />
+        <module name="notification-service" />
         <module name="products" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="discovery-service" target="17" />
+      <module name="kafka-producer-consumer" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="discovery" options="-parameters" />
-      <module name="notification" options="" />
+      <module name="kafka" options="-parameters" />
+      <module name="notification" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
-      <module name="payments" options="" />
+      <module name="payments" options="-parameters" />
       <module name="products" options="-parameters" />
     </option>
   </component>
