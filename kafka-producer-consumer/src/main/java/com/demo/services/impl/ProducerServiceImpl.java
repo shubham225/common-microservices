@@ -1,6 +1,7 @@
 package com.demo.services.impl;
 
 import com.demo.services.ProducerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@Slf4j
 public class ProducerServiceImpl implements ProducerService {
     private final KafkaTemplate<String, Object> template;
 
@@ -17,13 +19,13 @@ public class ProducerServiceImpl implements ProducerService {
 
     @Override
     public void sendMessage(String topic, String message) {
-        CompletableFuture<SendResult<String, Object>> future = template.send(topic, message);
+        for(int i = 0; i < 10000; i++) {
+            CompletableFuture<SendResult<String, Object>> future = template.send(topic, message + " - " + Integer.toString(i));
 
-        future.whenComplete((result, ex) -> {
-            if(ex == null)
-                System.out.println("Success : " + result);
-            else
-                System.out.println("Error : " + ex.getMessage());
-        });
+            future.whenComplete((result, ex) -> {
+                if (ex != null)
+                    log.error("Error : {}", ex.getMessage());
+            });
+        }
     }
 }
