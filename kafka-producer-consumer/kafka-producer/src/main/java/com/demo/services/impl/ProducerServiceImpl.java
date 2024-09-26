@@ -19,13 +19,11 @@ public class ProducerServiceImpl implements ProducerService {
 
     @Override
     public void sendMessage(String topic, String message) {
-        for(int i = 0; i < 10000; i++) {
-            CompletableFuture<SendResult<String, Object>> future = template.send(topic, message + " - " + Integer.toString(i));
+        CompletableFuture<SendResult<String, Object>> future = template.send(topic, message + " - " + Integer.toString(4));
 
-            future.whenComplete((result, ex) -> {
-                if (ex != null)
-                    log.error("Error : {}", ex.getMessage());
-            });
-        }
+        future.whenComplete((result, ex) -> {
+            if (ex != null)
+                log.error("Error : {}", ex.getMessage());
+        });
     }
 }

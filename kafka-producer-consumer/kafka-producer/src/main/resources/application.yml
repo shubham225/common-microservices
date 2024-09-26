@@ -1,0 +1,13 @@
+# Server Config
+server:
+    port: 9195
+
+spring:
+    application:
+        name: kafka-producer-service
+    kafka:
+        producer:
+            bootstrap-servers: localhost:9092
+        consumer:
+            bootstrap-servers: localhost:9092
+            group-id: my-cons-group-1

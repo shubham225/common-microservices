@@ -1,11 +1,10 @@
 # Server Config
 server:
-    port: 9191
+    port: 9196
 
 spring:
     application:
         name: kafka-service
-# Eureka Server Config
     kafka:
         producer:
             bootstrap-servers: localhost:9092
