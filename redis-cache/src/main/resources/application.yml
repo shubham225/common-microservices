@@ -1,0 +1,7 @@
+# Server Config
+server:
+  port: 9197
+
+spring:
+  application:
+    name: redis-service
