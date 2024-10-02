@@ -2,11 +2,13 @@ package com.example.redis.services;
 
 import com.example.redis.models.Product;
 import com.example.redis.repositories.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProductService {
     private final ProductRepository productRepository;
 
@@ -19,6 +21,7 @@ public class ProductService {
     }
 
     public Product findById(int id) {
+        log.info("Finding Product from Database");
         return productRepository.findById(id);
     }
 
